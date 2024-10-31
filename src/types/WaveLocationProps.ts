@@ -1,0 +1,15 @@
+export interface WaveLocationProps {
+  _id: number,
+  Site: string,
+  SiteNumber: string,
+  Seconds: string,
+  DateTime: string,
+  Latitude: string,
+  Longitude: string,
+  Hsig: string,
+  Hmax: string,
+  Tp: string,
+  Tz: string,
+  SST: string,
+  Direction: string,
+}
