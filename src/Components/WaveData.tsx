@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { WaveLocationProps } from "../types/WaveLocationProps";
+import { WaveDataProps } from 'types/WaveDataProps';
 import style from "./style.module.css";
 
-const WaveLocation: React.FC<WaveLocationProps> = ({
+const WaveData: React.FC<WaveDataProps> = ({
   _id,
-  Site,
-  SiteNumber,
-  Seconds,
+  // Site,
+  // SiteNumber,
+  // Seconds,
   DateTime,
-  Latitude,
-  Longitude,
+  // Latitude,
+  // Longitude,
   Hsig,
   Hmax,
   Tp,
@@ -19,13 +19,13 @@ const WaveLocation: React.FC<WaveLocationProps> = ({
 }) => {
   return (
     <div key={_id} className={style.locationWrapper}>
-      <h2>Site: {Site}</h2>
+      {/* <h2>Site: {Site}</h2>
       <p>ID: {_id}</p>
       <p>Site Number: {SiteNumber}</p>
-      <p>Timestamp: {Seconds}</p>
+      <p>Timestamp: {Seconds}</p> */}
       <p>DateTime: {DateTime}</p>
-      <p>Latitude: {Latitude}</p>
-      <p>Longitude: {Longitude}</p>
+      {/* <p>Latitude: {Latitude}</p>
+      <p>Longitude: {Longitude}</p> */}
       <p>Significant Wave Height (Hsig): {Hsig}</p>
       <p>Max Wave Height (Hmax): {Hmax}</p>
       <p>Peak Period (Tp): {Tp}</p>
@@ -36,4 +36,4 @@ const WaveLocation: React.FC<WaveLocationProps> = ({
   )
 }
 
-export default WaveLocation;
+export default WaveData;

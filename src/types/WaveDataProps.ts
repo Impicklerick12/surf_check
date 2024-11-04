@@ -1,4 +1,4 @@
-export interface WaveLocationProps {
+export interface WaveDataProps {
   _id: number,
   Site: string,
   SiteNumber: string,
