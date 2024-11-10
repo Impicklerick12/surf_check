@@ -58,9 +58,10 @@ Ensure you have the following installed:
 
 This project uses the **Queensland Government Open Data API** to fetch surf-related data. The primary endpoint for data is:
 
-> const resourceID = '2bbef99e-9974-49b9-a316-57402b00609c;`
->
-> const url = https://data.qld.gov.au/api/3/action/datastore_search?resource_id=${resourceID}&limit=100&offset=${offset};`
+```javascript
+const resourceID = '2bbef99e-9974-49b9-a316-57402b00609c;'
+const url = https://data.qld.gov.au/api/3/action/datastore_search?resource_id=${resourceID}&limit=100&offset=${offset};`
+```
 
 
 Filtering and sorting are achieved through SQL-like queries appended to the request URL.
@@ -68,30 +69,20 @@ Filtering and sorting are achieved through SQL-like queries appended to the requ
 ### Example Data Structure
 
 Data fetched from the API includes the following fields:
-
-> { 
->
->   "_id": 100, 
->
->   "Site": "Caloundra", 
->
->   "DateTime": "2024-10-26T02:00:00", 
->
->   "Latitude": "-26.84565", 
->
->   "Longitude": "153.15452", 
->
->   "Hsig": "0.722",
->
->   "Hmax": "1.170", 
->
->   "Tp": "10.530",
->
->   "SST": "23.80",
->
->   "Direction": "99.80" 
->
-> }
+```json
+{ 
+  "_id": 100, 
+  "Site": "Caloundra", 
+  "DateTime": "2024-10-26T02:00:00", 
+  "Latitude": "-26.84565", 
+  "Longitude": "153.15452", 
+  "Hsig": "0.722",
+  "Hmax": "1.170", 
+  "Tp": "10.530",
+  "SST": "23.80",
+  "Direction": "99.80" 
+}
+```
 
 ---
 
