@@ -309,30 +309,30 @@ numOldsPeople: 4
 
 // ---------------------------------------------------------------------------------------------------------------------- //
 // QLD Wave Data
-const resourceID = '2bbef99e-9974-49b9-a316-57402b00609c';
-const limit = 100; // Number of records to fetch
+// const resourceID = '2bbef99e-9974-49b9-a316-57402b00609c';
+// const limit = 100; // Number of records to fetch
 
-const url = `https://data.qld.gov.au/api/3/action/datastore_search?resource_id=${resourceID}&limit=${limit}`;
+// const url = `https://data.qld.gov.au/api/3/action/datastore_search?resource_id=${resourceID}&limit=${limit}`;
 
-fetch(url)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    // Access the records array
-    const records = data.result.records;
+// fetch(url)
+//   .then(response => {
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     return response.json();
+//   })
+//   .then(data => {
+//     // Access the records array
+//     const records = data.result.records;
 
-    // Log each record
-    records.forEach(record => {
-      console.log(record);
-    });
-  })
-  .catch(error => {
-    console.error('There was a problem with the fetch operation:', error);
-  });
+//     // Log each record
+//     records.forEach(record => {
+//       console.log(record);
+//     });
+//   })
+//   .catch(error => {
+//     console.error('There was a problem with the fetch operation:', error);
+//   });
 // ---------------------------------------------------------------------------------------------------------------------- //
 
 
@@ -357,28 +357,28 @@ fetch(url)
 // ---------------------------------------------------------------------------------------------------------------------- //
 
 // ---------------------------------------------------------------------------------------------------------------------- //
-// const fetchUniqueSites = async () => {
-//   const resourceID = '2bbef99e-9974-49b9-a316-57402b00609c';
-//   const sql = encodeURIComponent(`SELECT DISTINCT "Site" FROM "${resourceID}"`);
-//   const url = `https://data.qld.gov.au/api/3/action/datastore_search_sql?sql=${sql}`;
+const fetchUniqueSites = async () => {
+  const resourceID = '2bbef99e-9974-49b9-a316-57402b00609c';
+  const sql = encodeURIComponent(`SELECT DISTINCT "Site" FROM "${resourceID}"`);
+  const url = `https://data.qld.gov.au/api/3/action/datastore_search_sql?sql=${sql}`;
 
-//   try {
-//     const response = await fetch(url);
-//     if (!response.ok) {
-//       throw new Error('Network response was not ok');
-//     }
-//     const data = await response.json();
-//     console.log(data); // List of unique Site names
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    console.log(data); // List of unique Site names
 
-//     const uniqueSites = data.result.records.map((record) => record.Site);
-//     console.log(uniqueSites); // List of unique Site names
-//   } catch (error) {
-//     console.error('Fetch error:', error);
-//   }
-// };
+    const uniqueSites = data.result.records.map((record) => record.Site);
+    console.log(uniqueSites); // List of unique Site names
+  } catch (error) {
+    console.error('Fetch error:', error);
+  }
+};
 
-// // Call the function to fetch unique sites
-// fetchUniqueSites();
+// Call the function to fetch unique sites
+fetchUniqueSites();
 // ---------------------------------------------------------------------------------------------------------------------- //
 
 
