@@ -4,31 +4,29 @@ import {
   InfoWindow,
   useAdvancedMarkerRef
 } from '@vis.gl/react-google-maps';
+import { qldSurfSpotAdapter } from "../data/QLDSurfSpots";
 
 export interface MarkerWithInfoWindowProps {
+  location: string,
   position: { lat: number; lng: number },
-  index: number
+  index: number,
+  isSelected: boolean,
+  setSelectedLocation: React.Dispatch<React.SetStateAction<string | null>>
 }
 
 const MarkerWithInfoWindow: React.FC<MarkerWithInfoWindowProps> = ({
+  location,
   position,
-  index
+  index,
+  isSelected,
+  setSelectedLocation
 }) => {
-  // `markerRef` and `marker` are needed to establish the connection between
-  // the marker and infowindow (if you're using the Marker component, you
-  // can use the `useMarkerRef` hook instead).
   const [markerRef, marker] = useAdvancedMarkerRef();
-
-  const [infoWindowShown, setInfoWindowShown] = useState(false);
-
-  // clicking the marker will toggle the infowindow
   const handleMarkerClick = useCallback(
-    () => setInfoWindowShown(isShown => !isShown),
+    () => setSelectedLocation(location),
     []
   );
-
-  // if the maps api closes the infowindow, we have to synchronize our state
-  const handleClose = useCallback(() => setInfoWindowShown(false), []);
+  const handleClose = useCallback(() => setSelectedLocation(null), []);
 
   return (
     <div key={index}>
@@ -37,10 +35,10 @@ const MarkerWithInfoWindow: React.FC<MarkerWithInfoWindowProps> = ({
         position={position}
         onClick={handleMarkerClick}
       />
-      {infoWindowShown && (
+      {isSelected && (
         <InfoWindow anchor={marker} onClose={handleClose}>
           {/* WAVE LOCATION SNAPSHOT DATA HERE */}
-          <h2>InfoWindow content!</h2>
+          <h2>{qldSurfSpotAdapter[location]}</h2>
           <p>Some arbitrary html to be rendered into the InfoWindow.</p>
         </InfoWindow>
       )}
